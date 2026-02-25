@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send to Discord</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .container {
+      background: #111;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      background: #222;
+      color: white;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: white;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px white;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      box-shadow: 0 0 20px white, 0 0 40px white;
+      transform: scale(1.05);
+    }
+
+    #status {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Screen Time</h2>
+  <input type="text" id="name" placeholder="Enter your name" required>
+  <input type="text" id="email" placeholder="Put your Screen Time" required>
+  <button onclick="sendToDiscord()">Submit</button>
+  <p id="status"></p>
+</div>
+
+<script>
+  const webhookURL = "https://discord.com/api/webhooks/1443163483964178554/DnfNFx22Dc2BG4WPOyTjSkadSBOukjqkOMfeU0OhuBcT0-4jLLjLcI8jV5F7KI9Rn8_t";
+
+  function sendToDiscord() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const status = document.getElementById("status");
+
+    if (!name || !email) {
+      status.textContent = "Please fill in all fields.";
+      status.style.color = "red";
+      return;
+    }
+
+    const data = {
+      content: "**New Submission**\nName: " + name + "\nEmail: " + email
+    };
+
+    fetch(webhookURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(() => {
+      status.textContent = "Sent successfully!";
+      status.style.color = "lightgreen";
+      document.getElementById("Grades").value = "";
+      document.getElementById("Study Hours").value = "";
+    })
+    .catch(() => {
+      status.textContent = "Error sending data.";
+      status.style.color = "red";
+    });
+  }
+</script>
+
+</body>
+</html>
