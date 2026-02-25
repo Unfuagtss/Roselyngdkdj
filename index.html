@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Send to Discord</title>
+  <title>Made by Tristan Fua</title>
   <style>
     body {
       background: #0d0d0d;
@@ -65,7 +65,7 @@
 <body>
 
 <div class="container">
-  <h2>Screen Time</h2>
+  <h2>Made By Tristan Fua</h2>
   <input type="text" id="name" placeholder="Enter your name" required>
   <input type="text" id="email" placeholder="Put your Screen Time" required>
   <button onclick="sendToDiscord()">Submit</button>
@@ -87,7 +87,7 @@
     }
 
     const data = {
-      content: "**New Submission**\nName: " + name + "\nEmail: " + email
+      content: "**New Submission**\nSocial Media Usage: " + name + "\nScreen Time: " + email
     };
 
     fetch(webhookURL, {
@@ -100,8 +100,8 @@
     .then(() => {
       status.textContent = "Sent successfully!";
       status.style.color = "lightgreen";
-      document.getElementById("Grades").value = "";
-      document.getElementById("Study Hours").value = "";
+      document.getElementById("name").value = "";
+      document.getElementById("Email").value = "";
     })
     .catch(() => {
       status.textContent = "Error sending data.";
