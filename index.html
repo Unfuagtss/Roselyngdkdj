@@ -1,113 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Made by Tristan Fua</title>
-  <style>
-    body {
-      background: #0d0d0d;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
-    }
+<meta charset="UTF-8">
+<title>Survey Questionnaire</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #000;
+  padding: 20px;
+}
 
-    .container {
-      background: #111;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      width: 300px;
-      text-align: center;
-    }
+form {
+  max-width: 700px;
+  margin: auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+}
 
-    h2 {
-      margin-bottom: 20px;
-    }
+h2 {
+  text-align: center;
+}
 
-    input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-      outline: none;
-      background: #222;
-      color: white;
-    }
+.section {
+  margin-bottom: 20px;
+}
 
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background: white;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 10px white;
-      transition: 0.3s;
-    }
+button {
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-    button:hover {
-      box-shadow: 0 0 20px white, 0 0 40px white;
-      transform: scale(1.05);
-    }
-
-    #status {
-      margin-top: 10px;
-      font-size: 14px;
-    }
-  </style>
+button:hover {
+  opacity: 0.8;
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-  <h2>Made By Tristan Fua</h2>
-  <input type="text" id="name" placeholder="Enter your name" required>
-  <input type="text" id="email" placeholder="Put your Screen Time" required>
-  <button onclick="sendToDiscord()">Submit</button>
-  <p id="status"></p>
+<form id="surveyForm">
+<h2>Survey Questionnaire Made By Tristan Fua</h2>
+
+<div class="section">
+<b>Academic Strand:</b><br>
+<input type="radio" name="strand" value="CARPENTRY"> CARPENTRY<br>
+<input type="radio" name="strand" value="GA"> GA<br>
+<input type="radio" name="strand" value="EIM"> EIM<br>
+<input type="radio" name="strand" value="CSS"> CSS<br>
 </div>
 
+<div class="section">
+<b>Do you use social media?</b><br>
+<input type="radio" name="useSocial" value="Yes"> Yes<br>
+<input type="radio" name="useSocial" value="No"> No<br>
+</div>
+
+<div class="section">
+<b>What social media platforms do you use?</b><br>
+<input type="checkbox" name="platform" value="Facebook"> Facebook<br>
+<input type="checkbox" name="platform" value="TikTok"> TikTok<br>
+<input type="checkbox" name="platform" value="Instagram"> Instagram<br>
+<input type="checkbox" name="platform" value="Messenger"> Messenger<br>
+Other: <input type="text" id="otherPlatform"><br>
+</div>
+
+<div class="section">
+<b>Hours per day on social media:</b><br>
+<input type="radio" name="hoursSocial" value="Less than 1 hour"> Less than 1 hour<br>
+<input type="radio" name="hoursSocial" value="1–2 hours"> 1–2 hours<br>
+<input type="radio" name="hoursSocial" value="3–4 hours"> 3–4 hours<br>
+<input type="radio" name="hoursSocial" value="5–6 hours"> 5–6 hours<br>
+<input type="radio" name="hoursSocial" value="More than 6 hours"> More than 6 hours<br>
+</div>
+
+<div class="section">
+<b>Main purpose of using social media:</b><br>
+<input type="radio" name="purpose" value="Communication"> Communication<br>
+<input type="radio" name="purpose" value="Entertainment"> Entertainment<br>
+<input type="radio" name="purpose" value="School-related"> School-related activities<br>
+<input type="radio" name="purpose" value="Online shopping"> Online shopping<br>
+Other: <input type="text" id="otherPurpose"><br>
+</div>
+
+<div class="section">
+<b>Study time per day (outside school):</b><br>
+<input type="radio" name="studyTime" value="Less than 1 hour"> Less than 1 hour<br>
+<input type="radio" name="studyTime" value="1–2 hours"> 1–2 hours<br>
+<input type="radio" name="studyTime" value="3–4 hours"> 3–4 hours<br>
+<input type="radio" name="studyTime" value="5–6 hours"> 5–6 hours<br>
+<input type="radio" name="studyTime" value="More than 6 hours"> More than 6 hours<br>
+</div>
+
+<div class="section">
+<b>Do you use social media while studying?</b><br>
+<input type="radio" name="whileStudy" value="Always"> Always<br>
+<input type="radio" name="whileStudy" value="Often"> Often<br>
+<input type="radio" name="whileStudy" value="Sometimes"> Sometimes<br>
+<input type="radio" name="whileStudy" value="Rarely"> Rarely<br>
+<input type="radio" name="whileStudy" value="Never"> Never<br>
+</div>
+
+<button type="submit">Submit</button>
+</form>
+
 <script>
-  const webhookURL = "https://discord.com/api/webhooks/1476225219130560524/sj3XRzrr7w_-QaL7D09qqBIitAzYZ93N7Xge6Qgp4wBC4KWdOpfUf0xn06iWCAQoca2E";
+document.getElementById("surveyForm").addEventListener("submit", function(e){
+  e.preventDefault();
 
-  function sendToDiscord() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const status = document.getElementById("status");
+  let strand = document.querySelector('input[name="strand"]:checked')?.value || "None";
+  let useSocial = document.querySelector('input[name="useSocial"]:checked')?.value || "None";
+  let hoursSocial = document.querySelector('input[name="hoursSocial"]:checked')?.value || "None";
+  let purpose = document.querySelector('input[name="purpose"]:checked')?.value || "None";
+  let studyTime = document.querySelector('input[name="studyTime"]:checked')?.value || "None";
+  let whileStudy = document.querySelector('input[name="whileStudy"]:checked')?.value || "None";
 
-    if (!name || !email) {
-      status.textContent = "Please fill in all fields.";
-      status.style.color = "red";
-      return;
-    }
+  let platforms = [];
+  document.querySelectorAll('input[name="platform"]:checked').forEach(cb => platforms.push(cb.value));
 
-    const data = {
-      content: "**New Submission**\nSocial Media Usage: " + name + "\nScreen Time: " + email
-    };
+  let otherPlatform = document.getElementById("otherPlatform").value;
+  let otherPurpose = document.getElementById("otherPurpose").value;
 
-    fetch(webhookURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(() => {
-      status.textContent = "Sent successfully!";
-      status.style.color = "lightgreen";
-      document.getElementById("name").value = "";
-      document.getElementById("Email").value = "";
-    })
-    .catch(() => {
-      status.textContent = "Error sending data.";
-      status.style.color = "red";
-    });
-  }
+  let message = `
+**New Survey Response**
+Academic Strand: ${strand}
+Uses Social Media: ${useSocial}
+Platforms: ${platforms.join(", ")} ${otherPlatform}
+Hours on Social Media: ${hoursSocial}
+Purpose: ${purpose} ${otherPurpose}
+Study Time: ${studyTime}
+Uses Social Media While Studying: ${whileStudy}
+  `;
+
+  fetch("https://discord.com/api/webhooks/1476225219130560524/sj3XRzrr7w_-QaL7D09qqBIitAzYZ93N7Xge6Qgp4wBC4KWdOpfUf0xn06iWCAQoca2E", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ content: message })
+  })
+  .then(() => {
+    alert("Survey submitted successfully!");
+    document.getElementById("surveyForm").reset();
+  })
+  .catch(() => alert("Error sending data"));
+});
 </script>
 
 </body>
